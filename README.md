@@ -10,43 +10,7 @@ Think of this as your go-to guide if you're into Infrastructure as Code (IaC), m
 
 I've designed this project around a "GitOps" idea. Basically, my GitHub repository is the single source of truth for literally everything – from my app code to how the whole infrastructure is set up. Here's a quick peek at how it all flows:
 
-```mermaid
-flowchart TD
-  direction TB
-
-  subgraph Developer
-    A["🧑‍💻 Push to GitHub"]
-  end
-
-  subgraph GitHub Actions
-    B1["⚙️ CI Workflow"]
-    B2["🧪 tfsec Scan"]
-    B3["🔍 Trivy Scan"]
-    B4["🔐 Seal Secrets"]
-  end
-
-  subgraph AWS Infrastructure
-    C1["📦 S3 Bucket"]
-    C2["🛠️ CodeBuild"]
-    C3["🚀 CodeDeploy"]
-    C4["🔁 CodePipeline"]
-    C5["🔐 IAM Roles"]
-  end
-
-  subgraph Kubernetes Cluster
-    D1["🧩 Sealed Secrets Controller"]
-    D2["☸️ Deployments"]
-  end
-
-  A --> B1
-  B1 --> B2 & B3 & B4
-  B2 --> C4
-  B3 --> C4
-  B4 --> D1
-  C4 --> C1 & C2 & C3 & C5
-  C3 --> D2
-  D1 --> D2
-🔑 Why is this Project So Cool? (Key Highlights)
+🔑  Why is this Project So Cool? (Key Highlights)
 I'm pretty proud of these aspects:
 
 Infrastructure as Code (IaC): Seriously, all my AWS stuff – CodePipeline, EC2 instances, S3 buckets, and even the IAM roles – it's all defined and managed by Terraform. No more clicking around manually!
